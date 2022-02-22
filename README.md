@@ -8,3 +8,9 @@ python3 test.py --dataroot=STEDB_BB --dataset_mode=two_masks_channels --phase=va
 ```
 
 Change parameters ```--dataroot``` (folder), ```--dataset-model``` (dataloader) and ```--phase``` (subfolder) to test on other images.
+
+To test in STED_Julia2022 images:
+
+```
+python3 test.py --dataroot=STED_Julia2022 --dataset_mode=single --phase=test --preprocess=none --model=segmentation --netS=unet_128 --name=STEDB_segmentation200 --epoch=best
+```
