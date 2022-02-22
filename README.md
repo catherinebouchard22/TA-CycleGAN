@@ -1,5 +1,4 @@
 # TA-CycleGAN
-TA-CycleGAN
 
 Folder STEDB_BB contains dendritic images translated into new STED images. These train/valid splits were used to train a UNet for the segmentation of F-actin rings and fibers in new STED images. To test the segmentation model, run the following line:
 
