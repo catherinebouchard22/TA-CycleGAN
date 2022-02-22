@@ -43,10 +43,13 @@ class SingleDataset(BaseDataset):
         image = tifffile.imread(image_path)#[0,0,:,:]
         if image.min() == 32768:
             image -= 32768
-        #STED = (STED - STED.min()) / (STED.max() - STED.min()) * 2.0 - 1.0
-        STED = Image.fromarray(image)
+
+        # Make sure size is compatible with UNet-128 (must be a multiple of 128)
+        if self.opt.netS == 'unet_128':
+            image = image[:image.shape[0] - image.shape[0] % 128, :image.shape[1] - image.shape[1] % 128]
 
         # apply transformation
+        STED = Image.fromarray(image)
         transform_params = get_params(self.opt, STED.size)
         image_transform = get_transform(self.opt, transform_params, grayscale=True)
 

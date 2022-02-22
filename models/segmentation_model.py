@@ -75,7 +75,6 @@ class SegmentationModel(BaseModel):
     def forward(self):
         """Run forward pass; called by both functions <optimize_parameters> and <test>."""
         self.seg_B = self.netS(self.B)  # S_B(B)
-        print(self.seg_B.max())
         if self.isTrain:
             self.loss_S = self.criterionSEG(self.seg_GT, self.seg_B)  # loss between real B segmentation and GT
 
